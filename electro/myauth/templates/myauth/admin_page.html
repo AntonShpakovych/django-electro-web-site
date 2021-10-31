@@ -1,0 +1,89 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %} Admin{% endblock %}
+{% block content %}
+<h2>Most sell product is:</h2>
+<div class="container">
+    <div class="col-md-8">
+    <table class="user table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Unit price</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for n in name %}
+            <tr>
+                
+                <td><a href="{% url 'shop:product' n.id n.slug %}">{{n}}</a></td>
+                
+                <td>{{n.price}}</td>
+
+            </tr>
+           
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <div class="col-md-2">
+    <table class="adm_quan table">
+        <thead>
+            <tr>
+                <th>SOLD</th>
+                
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for q in quantity %}
+            <tr>
+                <td>{{q}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+<h2>All products</h2>
+<table class="user table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>In stock</th>
+            <th>Brand</th>
+            
+            <th>Unit price</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %} 
+        <tr>
+            <td>
+                <img width="50px" src="{% if product.main_photo %}{{ product.main_photo.url }}{% else %}{% static 'img/placeholder.png' %}{% endif %}" alt="{{ product.name }}">
+            </td>
+            <td>{{product}}</td>
+            <td>{{product.stock}}</td>
+            <td>{{product.brand}}</td>
+            <td>{{product.price}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="container">
+    <h1>Add new product</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" name="submit" id="">
+    </form>
+    <h1>Change order status</h1>
+    {% for order in orders %}
+        <a href="{% url 'myauth:admin_change_order' order_id=order.id %}">Order id : {{order.id}} User: {{order.first_name}}{{order.last_name}} Status: {{order.paid}}<br></a>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+<h1>Sign in</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{csrf_token}}
+    <label for="username">username</label>
+    <input type="text" name="username"><br>
+    <label for="firstname">firstname</label>
+    <input type="text" name="firstname"><br>
+    <label for="lastname">lastname</label>
+    <input type="text" name="lastname"><br>
+    <label for="password">password</label>
+    <input type="password" name="password"><br>
+    <label for="email">email</label>
+    <input type="email" name="email"><br>
+    <label for="city">city</label>
+    <input type="text" name="city"><br>
+    <label for="phone">phone</label>
+    <input type="text" name="phone"><br>
+    <label for="address">address</label>
+    <input type="text" name="address"><br>
+    <label for="country">country</label>
+    <input type="text" name="country"><br>
+    <label for="zipcode">zipcode</label>
+    <input type="text" name="zipcode"><br>
+    <button type="submit">LOG IN</button>
+</form>
+		
+{% endblock %}

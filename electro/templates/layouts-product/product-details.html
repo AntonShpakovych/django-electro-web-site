@@ -1,0 +1,80 @@
+{% load static %}
+<!-- Product details -->
+<div class="col-md-5">
+    <div class="product-details">
+        <h2 class="product-name">{{ product_detail.name }}</h2>
+        <div>
+            <div class="product-rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+            </div>
+            <a class="review-link" href="#">10 Review(s) | Add your review</a>
+        </div>
+        <div>
+            <h3 class="product-price">{{ product_detail.price }} <del class="product-old-price">{{ product_detail.old_price }}</del></h3>
+            {% if product_detail.stock > 0 %}
+            <span class="product-available">IN STOCK </span>
+            {% else %}
+            <span class="product-available">NOT IN STOCK </span>
+            {% endif %}
+        </div>
+        <p>{{ product_detail.description }}</p>
+
+        <div class="product-options">
+            <label>
+                Size
+                <select class="input-select">
+                    <option value="0">X</option>
+                </select>
+            </label>
+            <label>
+                Color
+                <select class="input-select">
+                    <option value="0">Red</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="add-to-cart">
+            <div class="qty-label">
+                Qty
+                <div class="input-number">
+                    
+                    <input type="number" value="{{ product_detail.stock }}">
+                    <!-- <span class="qty-up"></span>
+                    <span class="qty-down">-</span> -->
+                </div>
+            </div>
+            <form action="{% url 'cart:cart_add' product_detail.id %}" method="post">
+                {{ cart_product_form }}
+                {% csrf_token %}
+                <input class="add-to-cart-btn btn" type="submit" value="Add to cart" >
+            </form>
+            <!-- <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button> -->
+        </div>
+
+        <ul class="product-btns">
+            <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
+            <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
+        </ul>
+
+        <ul class="product-links">
+            <li>Category:</li>
+            <li><a href="#">Headphones</a></li>
+            <li><a href="#">Accessories</a></li>
+        </ul>
+
+        <ul class="product-links">
+            <li>Share:</li>
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+        </ul>
+
+    </div>
+</div>
+<!-- /Product details -->

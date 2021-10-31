@@ -1,0 +1,35 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %} product{% endblock %}
+{% block content %}
+{% include '../layouts-store/breadcrumbs.html' %}
+		
+	<!-- SECTION -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                {% include '../layouts-product/main-img.html' %}
+
+                {% include '../layouts-product/thumb-img.html' %}
+
+                {% include '../layouts-product/product-details.html' %}
+
+                {% include '../layouts-product/product-tab.html' %}
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /SECTION -->
+    {% include '../layouts-product/related.html' %}
+		
+
+		
+		
+
+		
+
+		
+{% endblock %}

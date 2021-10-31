@@ -1,0 +1,25 @@
+{% load static %}
+<!-- BREADCRUMB -->
+<div id="breadcrumb" class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb-tree">
+                    <li><a href="{% url 'shop:store' %}">Store</a></li>
+                    {% if category %}
+                        <li><a href="{% url 'shop:categories_list' category_slug=category.slug %}">{{category}}</a></li>
+                    {% endif %}
+
+                    {% if product_detail %}
+                    <li>{{product_detail.name}}</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /BREADCRUMB -->

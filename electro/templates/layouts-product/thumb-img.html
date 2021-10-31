@@ -1,0 +1,22 @@
+{% load static %}
+<!-- Product thumb imgs -->
+<div class="col-md-2  col-md-pull-5">
+    <div id="product-imgs">
+        <div class="product-preview">
+            <img src="{% if product_detail.main_photo %} {{ product_detail.main_photo.url }} {% else %}{% static 'img/placeholder.jpg' %}{% endif %}" alt="">
+        </div>
+
+        <div class="product-preview">
+            <img src="{% if product_detail.photo_1 %} {{ product_detail.photo_1.url }} {% else %}{% static 'img/placeholder.jpg' %}{% endif %}" alt="">
+        </div>
+
+        <div class="product-preview">
+            <img src="{% if product_detail.photo_2 %} {{ product_detail.photo_2.url }} {% else %}{% static 'img/placeholder.jpg' %}{% endif %}" alt="">
+        </div>
+
+        <div class="product-preview">
+            <img src="{% if product_detail.photo_3 %} {{ product_detail.photo_3.url }} {% else %}{% static 'img/placeholder.jpg' %}{% endif %}" alt="">
+        </div>
+    </div>
+</div>
+<!-- /Product thumb imgs -->

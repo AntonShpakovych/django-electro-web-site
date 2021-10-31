@@ -1,0 +1,34 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %} Checkout{% endblock %}
+{% block content %}
+	
+{% include '../layouts-checkout/breadcrumb.html' %}	
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-md-7">
+                {% include '../layouts-checkout/biling_details.html' %}
+                {% include '../layouts-checkout/shiping_details.html' %}
+                {% include '../layouts-checkout/order_notes.html' %}
+            </div>
+
+            {% include '../layouts-checkout/order_details.html' %}
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /SECTION -->
+
+		
+		
+
+		
+
+		
+{% endblock %}

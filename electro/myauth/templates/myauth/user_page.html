@@ -1,0 +1,92 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block title %} Userpage{% endblock %}
+{% block content %}
+<div class="all_user_global">
+<div class="container">
+    <div id="main">
+        <div class="row" id="real-estates-detail">
+            <div class="col-lg-4 col-md-4 col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <header class="panel-title">
+                            <div class="text-center">
+                                <strong>{{user.username}}</strong>
+                            </div>
+                        </header>
+                    </div>
+                <div class="panel-body">
+                    <div class="text-center" id="author">
+                        <img width="190px" height="190px" src="https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331257__340.png">
+                            <h3>{{user.first_name}} {{user.last_name}}</h3>
+                                <small class="label label-warning">{{user_profile.country}}</small>
+                                <p class="sosmed-author">
+                                <a href="#"><i class="fa fa-facebook" title="Facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter" title="Twitter"></i></a>
+                                <a href="#"><i class="fa fa-google-plus" title="Google Plus"></i></a>
+                                <a href="#"><i class="fa fa-linkedin" title="Linkedin"></i></a>
+                                </p>
+                    </div>
+                </div>
+            </div>
+     </div>
+     <div class="col-lg-8 col-md-8 col-xs-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div id="myTabContent" class="tab-content">
+                <hr>
+                    <div class="tab-pane fade active in" id="detail">
+                    <h4>Info about user</h4>
+                    <table class="table table-th-block">
+                        <tbody>
+                            <tr><td class="active">First name:</td><td>{{user.first_name}}</td></tr>
+                            <tr><td class="active">Last name</td><td>{{user.last_name}}</td></tr>
+                            <tr><td class="active">Country:</td><td>{{user_profile.country}}</td></tr>
+                            <tr><td class="active">City:</td><td>{{user_profile.city}}</td></tr>
+                            <tr><td class="active">Email:</td><td>{{user_profile.email}}</td></tr>
+                            <tr><td class="active">Postcode</td><td>{{user_profile.zipcode}}</td></tr>
+                            <tr><td class="active">Address</td><td>{{user_profile.address}}</td></tr>     
+                        </tbody>
+                    </table>
+            </div>
+            <div class="tab-pane fade" id="contact">
+            <p></p>
+            </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </div>
+    <div id="order_user_item">
+        <table class="user table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Unit price</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    {% for i in order %}
+                <tr>
+                    <td>
+                        <img width="50px" src="{% if i.product.main_photo %}{{ i.product.main_photo.url }}{% else %}{% static 'img/placeholder.png' %}{% endif %}" alt="{{ i.product.name }}">
+                    </td>
+                    <td>{{i.product}}</td>
+                    <td>{{i.quantity}}</td>
+                    <td>{{i.price}}</td>
+                </tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+        </table>
+        <p>
+            <a href="{% url 'shop:store' %}" class="btn light">Continue shopping</a>
+        </p>
+    </div>
+</div>
+{% endblock %}
